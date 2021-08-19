@@ -22,6 +22,8 @@ A GitHub action for styling files with [prettier](https://prettier.io).
 | commit_options | :x: | - | Custom git commit options |
 | same_commit | :x: | `false` | Update the current commit instead of creating a new one, created by [Joren Broekema](https://github.com/jorenbroekema), this command works only with the checkout action set to fetch depth '0' (see example 2)  |
 | commit_message | :x: | `"Prettified Code!"` | Custom git commit message, will be ignored if used with `same_commit` |
+| commit_user_name | :x: | `"GitHub Action"` | Custom git commit user name |
+| commit_user_email | :x: | `"actions@github.com"` | Custom git commit user email |
 | file_pattern | :x: | `*` | Custom git add file pattern, can't be used with only_changed! |
 | prettier_plugins | :x: | ` ` | Install Prettier plugins, i.e. `@prettier/prettier-php @prettier/some-other-plugin` |
 | only_changed | :x: | `false` | Only prettify changed files, can't be used with file_pattern! This command works only with the checkout action set to fetch depth '0' (see example 2)|
@@ -53,10 +55,13 @@ jobs:
         ref: ${{ github.head_ref }}
 
     - name: Prettify code
-      uses: creyD/prettier_action@v3.3
+      uses: anaer/prettier_action@master
       with:
         # This part is also where you can pass other options, for example:
         prettier_options: --write **/*.{js,md}
+        commit_message: "style: prettify code or document"
+        commit_user_name: "GitHub Action"
+        commit_user_email: actions@github.com
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -83,7 +88,7 @@ jobs:
         fetch-depth: 0
 
     - name: Prettify code
-      uses: creyD/prettier_action@v3.3
+      uses: anaer/prettier_action@master
       with:
         # This part is also where you can pass other options, for example:
         prettier_options: --write **/*.{js,md}
