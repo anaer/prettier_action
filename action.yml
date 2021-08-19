@@ -4,6 +4,14 @@ description: Automatically runs prettier on all your changes.
 author: Conrad Großer <grosserconrad@gmail.com>
 
 inputs:
+  commit_user_name:
+    description: Commit user name
+    required: false
+    default: 'GitHub Action'
+  commit_user_email:
+    description: Commit user email
+    required: false
+    default: 'actions@github.com'
   commit_message:
     description: Commit message, will be ignored if used with same_commit
     required: false
