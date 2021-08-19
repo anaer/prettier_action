@@ -16,8 +16,8 @@ _git_setup ( ) {
 EOF
     chmod 600 $HOME/.netrc
 
-    git config --global user.email "actions@github.com"
-    git config --global user.name "GitHub Action"
+    git config --global user.email "$INPUT_COMMIT_USER_EMAIL"
+    git config --global user.name "$INPUT_COMMIT_USER_NAME"
 }
 
 # Checks if any files are changed
